@@ -52,14 +52,14 @@
 
 ## ShippingAddressテーブル
 
-| Column               | Type       | Options                        |
-| -------------------- | ---------- | ------------------------------ |
-| postal_code          | string     | null: false                    |
-| region               | string     | null: false                    |
-| city                 | string     | null: false                    |
-| address_line1        | string     | null: false                    |
-| address_line2        | string     |                                |
-| phone_number         | string     | null: false                    |
+| Column               | Type       | Options     |
+| -------------------- | ---------- | ----------- |
+| postal_code          | string     | null: false |
+| region               | string     | null: false |
+| city                 | string     | null: false |
+| address_line1        | string     | null: false |
+| address_line2        | string     |             |
+| phone_number         | string     | null: false |
 
 ### Association
 
