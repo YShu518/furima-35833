@@ -64,16 +64,17 @@
 | phone_number     | string     | null: false                    |
 | purchase_history | references | null: false, foreign_key: true |
 
+
 ### Association
 
 - belongs_to :purchase_history
 
 ## PurchaseHistory
 
-| Column  | Type | Options     |
-| ------- | ---- | ----------- |
-| user_id | int  | null: false |
-| item_id | int  | null: false |
+| Column | Type       | Options                        |
+| ------ | ---------- | ------------------------------ |
+| user   | references | null: false, foreign_key: true |
+| item   | references | null: false, foreign_key: true |
 
 ### Association
 
