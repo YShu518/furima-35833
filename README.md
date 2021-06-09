@@ -1,6 +1,6 @@
 # テーブル設計
 
-## Userテーブル
+## Usersテーブル
 
 | Column              | Type   | Options                   |
 | ------------------- | ------ | ------------------------- |
@@ -19,7 +19,7 @@
 - has_many :comments
 - has_many :purchase_histories
 
-## Itemテーブル
+## Itemsテーブル
 
 | Column           | Type       | Options                        |
 | ---------------- | ---------- | ------------------------------ |
@@ -39,7 +39,7 @@
 - belongs_to :user
 - has_one :purchase_history
 
-## Commentテーブル
+## Commentsテーブル
 
 | Column  | Type       | Options                        |
 | ------- | ---------- | ------------------------------ |
@@ -52,12 +52,12 @@
 - belongs_to :item
 - belongs_to :user
 
-## ShippingAddressテーブル
+## ShippingAddressesテーブル
 
 | Column           | Type       | Options                        |
 | ---------------- | ---------- | ------------------------------ |
 | postal_code      | string     | null: false                    |
-| region           | string     | null: false                    |
+| area_id          | int        | null: false                    |
 | city             | string     | null: false                    |
 | address_line1    | string     | null: false                    |
 | address_line2    | string     |                                |
@@ -69,7 +69,7 @@
 
 - belongs_to :purchase_history
 
-## PurchaseHistory
+## PurchaseHistories
 
 | Column | Type       | Options                        |
 | ------ | ---------- | ------------------------------ |
