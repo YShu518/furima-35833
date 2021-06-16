@@ -6,7 +6,7 @@ RSpec.describe Item, type: :model do
   end
 
   describe '出品商品新規登録' do
-    context '内容に問題がない場合'do
+    context '内容に問題がない場合' do
       it '全ての情報が存在すれば登録できる' do
         expect(@item).to be_valid
       end
@@ -132,7 +132,6 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include('Price is not a number')
       end
-
     end
   end
 end
