@@ -25,6 +25,12 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Description can't be blank")
       end
 
+      it '画像が空だと登録できない' do
+        @item.image = nil
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Image can't be blank")
+      end
+
       it 'category_idが空だと登録できない' do
         @item.category_id = ''
         @item.valid?
@@ -38,7 +44,7 @@ RSpec.describe Item, type: :model do
       end
 
       it 'category_idが1だと登録できない' do
-        @item.category_id = '1'
+        @item.category_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include('Category must be other than 1')
       end
@@ -56,7 +62,7 @@ RSpec.describe Item, type: :model do
       end
 
       it 'area_idが1だと登録できない' do
-        @item.area_id = '1'
+        @item.area_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include('Area must be other than 1')
       end
@@ -74,7 +80,7 @@ RSpec.describe Item, type: :model do
       end
 
       it 'shopping_cost_idが１だと登録できない' do
-        @item.shopping_cost_id = '1'
+        @item.shopping_cost_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include('Shopping cost must be other than 1')
       end
@@ -92,9 +98,27 @@ RSpec.describe Item, type: :model do
       end
 
       it 'takes_day_idが１だと登録できない' do
-        @item.takes_day_id = '1'
+        @item.takes_day_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include('Takes day must be other than 1')
+      end
+
+      it 'used_idが空だと登録できない' do
+        @item.used_id = ''
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Used can't be blank")
+      end
+
+      it 'used_idが数字以外だと登録できない' do
+        @item.used_id = 'abc'
+        @item.valid?
+        expect(@item.errors.full_messages).to include('Used is not a number')
+      end
+
+      it 'used_idが1だと登録できない' do
+        @item.used_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include('Used must be other than 1')
       end
 
       it 'priceが空だと登録できない' do
@@ -110,19 +134,19 @@ RSpec.describe Item, type: :model do
       end
 
       it 'priceが300未満だと登録できない' do
-        @item.price = '299'
+        @item.price = 299
         @item.valid?
         expect(@item.errors.full_messages).to include('Price must be greater than or equal to 300')
       end
 
       it 'priceが9999999より大きいと登録できない' do
-        @item.price = '1000000000'
+        @item.price = 1_000_000_000
         @item.valid?
         expect(@item.errors.full_messages).to include('Price must be less than or equal to 9999999')
       end
 
       it 'priceが小数を含むと登録できない' do
-        @item.price = '500.01'
+        @item.price = 500.01
         @item.valid?
         expect(@item.errors.full_messages).to include('Price must be an integer')
       end
@@ -131,6 +155,12 @@ RSpec.describe Item, type: :model do
         @item.price = '１２３'
         @item.valid?
         expect(@item.errors.full_messages).to include('Price is not a number')
+      end
+
+      it 'ユーザー情報がなければ登録できない' do
+        @item.user = nil
+        @item.valid?
+        expect(@item.errors.full_messages).to include('User must exist')
       end
     end
   end
