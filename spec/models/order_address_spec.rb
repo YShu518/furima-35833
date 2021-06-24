@@ -41,19 +41,19 @@ RSpec.describe OrderAddress, type: :model do
       it 'postal_cordが半角数字のみの場合' do
         @order_address.postal_code = '1234567'
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include('Postal code is invalid. Include hyphen(-)')
+        expect(@order_address.errors.full_messages).to include('Postal code is invalid')
       end
 
       it 'postal_cordが半角数字とハイフン以外を含む場合' do
         @order_address.postal_code = 'a12-3456'
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include('Postal code is invalid. Include hyphen(-)')
+        expect(@order_address.errors.full_messages).to include('Postal code is invalid')
       end
 
       it 'postal_cordが全角数字では登録できない' do
         @order_address.postal_code = '１２３-４５６７'
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include('Postal code is invalid. Include hyphen(-)')
+        expect(@order_address.errors.full_messages).to include('Postal code is invalid')
       end
 
       it 'area_idが空だと登録できない' do
