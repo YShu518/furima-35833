@@ -21,4 +21,5 @@ class User < ApplicationRecord
                                  message: 'is invalid. Include both letters and numbers' }
 
   has_many :items
+  has_many :orders
 end
