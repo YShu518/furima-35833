@@ -13,6 +13,14 @@ class Item < ApplicationRecord
     end
   end
 
+  def self.search(search)
+    if search != ""
+      Item.where('name LIKE(?)', "%#{search}")
+    else 
+      Item.order('created_at DESC')
+    end
+  end
+
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :category
   belongs_to :used
